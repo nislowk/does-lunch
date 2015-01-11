@@ -1,0 +1,67 @@
+ 
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <LINK REL="SHORTCUT ICON" HREF="//drzioeqvwiaw7.cloudfront.net/assets/img/favicon.ico">
+  <title>UZZ</title>
+  <script src="webcomponents.min.js"></script>
+  <link rel="import" href="components/paper-input/paper-input.html">
+  <link rel="import" href="components/paper-icon-button/paper-icon-button.html"
+</head>
+      <!-- create stylesheet -->
+<style>
+    .login {
+        max-height: 400px;
+    }
+    .login section {
+        padding: 0.5em;
+    }
+    .login {
+        position:relative;
+        width: 100%;
+        height: 100%;
+        background-color: white;
+    } 
+    .name, .email {
+         display: inline-block;
+         width: 100%;
+         height: 100%;
+    }
+    .credentials {
+         border: 2px solid black; 
+         padding: 0.5em;
+         min-height: 100px;
+    }
+    .login .title {
+        min-height: 15px;   
+    }
+    .submit span {
+         line-height: 40px;  
+         vertical-align: middle;
+         display: inline-block;
+    }
+    .submit paper-icon-button {
+        display: inline-block;
+        line-height: 40px;
+        vertical-align: middle; 
+    }
+</style>
+<body unresolved fullbleed>
+<!-- Login Page View -->
+    <core-animated-pages class="login"  vertical center-justified layout center>
+        <section class="title" auto-vertical>
+            <div vertical layout center>LOGIN</div>
+        </section>
+        <section class="credentials" auto-vertical>
+            <paper-input class="name" label="Name:"></paper-input> 
+            <paper-input class="email" label="Email:"></paper-input> 
+        </section>
+        <section class="submit" auto-vertical>
+            <span>Submit</span>
+            <paper-icon-button icon="send"></paper-icon-button>
+        </section>
+    </core-animated-pages>
+</body>
+</html>

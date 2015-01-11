@@ -1,0 +1,112 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <title>Fuzz Lunch</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <script src="components/webcomponentsjs/webcomponents.js"></script>
+
+<link rel="import" href="components/core-scroll-header-panel/core-scroll-header-panel.html">
+  <link rel="import" href="components/core-toolbar/core-toolbar.html">
+  <link rel="import" href="components/core-icon-button/core-icon-button.html">
+  <link rel="import" href="components/orders/orders.html">
+  <link rel="import" href="components/core-animation/web-animations.html">
+  <link rel="import" href="components/paper-icon-button/paper-icon-button.html">
+
+  <link href='http://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Pompiere' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Josefin+Slab:600' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Amatic+SC' rel='stylesheet' type='text/css'>
+
+  <style shim-shadowdom>
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Josefin Slab', serif;
+      color: #333;
+    }
+
+    core-scroll-header-panel {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-color: #eee;
+    }
+    /* background for toolbar when it is at its full size */
+    core-scroll-header-panel::shadow #headerBg {
+      background-image: url(http://static4.businessinsider.com/image/536d34b6ecad045b143e69bc/15-etiquette-rules-for-dining-at-fancy-restaurants.jpg);
+      background-position: center center;
+    }
+    /* background for toolbar when it is condensed */
+    core-scroll-header-panel::shadow #condensedHeaderBg {
+      background-color: #f4b400;
+    }
+    core-toolbar {
+      color: #f1f1f1;
+      fill: #f1f1f1;
+      background-color: transparent;
+      font-family: 'Pompiere', cursive;
+      color: #afccce;
+    }
+      /* main title */
+    #main-title {
+      -webkit-transform-origin: 0;
+      transform-origin: 0;
+      font-family: 'Amatic SC', cursive;
+      font-size: 4em;
+      color: white;
+    }
+    
+    #order-title {
+     color: #E86850;   
+    }
+    
+    #home-title {
+     color: white;
+    }
+    .content {
+/*      padding: 0.5em;*/
+    }
+
+  </style>
+</head>
+ <body unresolved>
+  <core-scroll-header-panel condenses keepCondensedHeader="true">
+    <core-toolbar class="tall" bottomJustify="center">
+        <div class="middle" flex></div>
+        <div class="middle title" id="main-title">FUZZ @ Lunch</div>
+        <div class="middle" flex></div>
+            <paper-icon-button class="top" icon="arrow-back" on-click={{actionReturn}}></paper-icon-button>
+        <div class="top" id="home-title" flex two>] HOME [</div>
+            <div class="bottom" id="order-title">[ ORDERS ]</div>
+        <paper-icon-button class="top" icon="menu" on-click={{actionMenu}}></paper-icon-button>
+        <paper-icon-button class="top" icon="settings" on-click={{actionSettings}}></paper-icon-button>
+    </core-toolbar>
+    <div class="content">
+      <order-items></order-items>
+    </div>
+  </core-scroll-header-panel>
+  <script>
+    // custom transformation: scale header's title
+//    var titleStyle = document.querySelector('#main-title').style;
+//    addEventListener('core-header-transform', function(e) {
+//      var d = e.detail;
+//      var m = d.height - d.condensedHeight;
+//      var scale = Math.max(0.75, (m - d.y) / (m / 0.25)  + 0.75);
+//      titleStyle.transform = titleStyle.webkitTransform =
+//          'scale(' + scale + ') translateZ(0)';
+//    });
+  </script>
+
+ </body>
+</html>
