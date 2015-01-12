@@ -17,12 +17,21 @@ core-animated-pages > * {
 }
 
 body /deep/ core-toolbar {
-  background-color: #03a9f4;
+  background-color: #151718;
   color: #fff;
 }
 
+.nav core-toolbar {
+ background-color: #f84221;   
+}
+ core-dropdown {
+    position: absolute;
+    top: 38px;
+    left: 0;
+  }
+
 core-menu {
-  color: #01579b;
+  color: black;
   margin: 10px 0 0 0;
 }
 
