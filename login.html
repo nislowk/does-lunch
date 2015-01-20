@@ -12,6 +12,7 @@
       
   <link rel="import" href="components/paper-input/paper-input-decorator.html">
   <link rel="import" href="components/paper-icon-button/paper-icon-button.html">
+  <link rel="import" href="components/core-overlay/core-overlay.html">
     
    <script type="text/javascript" src="jquery.videoBG/assets/jquery-1.5.1.js"></script>
 	<script type="text/javascript" src="jquery.videoBG/jquery.videoBG.js"></script>
@@ -22,10 +23,9 @@
     form {
      min-height: 300px;
      min-width: 250px;
-     display: inline-block;
-     position: fixed;
      background-color: black;
      opacity: 0.50;
+     display: hidden;
      box-shadow: 5px 5px rgba(0,0,0,0.5);
     }
     paper-input-decorator {
@@ -49,8 +49,10 @@
      opacity: 0.65;
     }
 </style>
-<body [unresolved]>
-    <form>
+  <body>
+   <div id="div_demo">
+    <core-overlay opened="true" vertical center-justified layout center>
+     <form>
         <paper-input-decorator  label="email">
             <input type="email" inputmode="email" tabindex="1" required autofocus>
         </paper-input-decorator> 
@@ -58,6 +60,8 @@
             <input type="password" minlength="6" tabindex="2" required>
         </paper-input-decorator>
         <paper-icon-button icon="send" vertical center-justified layout center></paper-icon-button>
-    </form>
-</body>
+     </form>
+    </core-overlay>
+    </div>
+   </body>
 </html>
