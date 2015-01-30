@@ -21,8 +21,8 @@ body /deep/ core-toolbar {
   color: #fff;
 }
 
-.nav core-toolbar {
- background-color: #f84221;   
+core-scroll-header-panel {
+ background-color: red;   
 }
  core-dropdown {
     position: absolute;
@@ -67,4 +67,5 @@ core-menu > paper-item.core-selected {
   #bottom2 {
     background-color: green;
   }
+    
 }

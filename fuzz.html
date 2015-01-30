@@ -13,6 +13,15 @@
 </head>
 <body unresolved fullbleed>
 
+    
+ <core-scroll-header-panel class="nav">
+        <div flex></div>
+        <span class="title">FUZZ</span>
+        <div flex></div>
+      <core-menu valueattr="hash" selected="{{route}}" selectedModel="{{selectedPage}}" on-core-select="{{menuItemSelected}}">
+      </core-menu>
+    </core-scroll-header-panel>
+              
 <template is="auto-binding" id="t">
 
   <!-- Route controller. -->
@@ -23,35 +32,14 @@
                   keys="up down left right space space+shift"
                   on-keys-pressed="{{keyHandler}}"></core-a11y-keys>
   
-    <core-scaffold class="scaffold">
-    <nav class="nav">
-      <core-toolbar>
-        <div flex></div>
-        <span>FUZZ</span>
-        <div flex></div>
-      </core-toolbar>
-      <core-menu valueattr="hash" selected="{{route}}" selectedModel="{{selectedPage}}"
-                 on-core-select="{{menuItemSelected}}">
-        <template repeat="{{page, i in pages}}">
-          <paper-item noink>
-            <core-icon icon="label{{route != page.hash ? '-outline' : ''}}"></core-icon>
-            <a href="#{{page.hash}}">{{page.name}}</a>
-          </paper-item>
-        </template>
-      </core-menu>
-    </nav>
-
-    <core-toolbar tool flex>
-        <!-- Try to create auto title using page.title -->
-      <a href="#{{page.hash}}">{{page.name}}</a>
-      <div flex>{{selectedPage.page.label}}</div>
-      <core-icon-button icon="refresh"></core-icon-button>
-      <core-icon-button icon="add" on-tap="closeDrawer"></core-icon-button>
-    </core-toolbar>
+    <core-animation id="fadeout" duration="500">
+          <core-animation-keyframe>
+    <core-animation-prop name="opacity" value="1"></core-animation-prop>
+            
 
     <div layout horizontal center-center fit>
  <core-animated-pages id="pages" valueattr="hash" selected="{{route}}"transitions="slide-from-right" on-tap="{{cyclePages}}">
-  <section id="Run" hash="0">
+  <section id="Run" hash="0" auto-vertical>
     <div id="bottom1" cross-fade></div>
   </section>
   <section id="Order" hash="1">
@@ -61,15 +49,32 @@
     <div id="bottom2" cross-fade></div>
   </section>
   <section id="Reflect" hash="2">
-    <div id="bottom3" cross-fade></div>
+    <div id="bottom3" cross-fade>
+     <session>
+      <list-test id="list" data="{{data}}"></list-test>
+    </session>  
+    </div>
   </section>
 </core-animated-pages>
 </div>
 
-  </core-scaffold>
+  </core-animation-keyframe>
+  <core-animation-keyframe>
+    <core-animation-prop name="opacity" value="0"></core-animation-prop>
+  </core-animation-keyframe>
+</core-animation>
 
 </template>
 
 <script src="app.js"></script>
+<script>
+      t.addEventListener('template-bound', function () {
+        var list = document.querySelector('list-test::shadow core-list');
+        // to update the size
+        list.updateSize();
+        this.job('delay', function () {
+            list.updateSize();
+        }, 50);
+</script>
 </body>
 </html>
